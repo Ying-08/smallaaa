@@ -1,10 +1,8 @@
-import React from "react";
-import Header from "../Header";
-import { APPStyle } from "../../style";
 import { Suspense } from "react";
-import { useRoutes } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import { APPStyle } from "../../style";
+import Header from "../Header";
 import LeftNav from "../LeftNav";
-import routes from "../../router";
 const OtherPage = (data: any) => {
   console.log("接受的url", data.url);
 
@@ -17,7 +15,9 @@ const OtherPage = (data: any) => {
 
           {/* 路由懒加载一定要有 */}
           <Suspense fallback="">
-            <div className="main">{useRoutes(routes)}</div>
+            <div className="main">
+              <Outlet></Outlet>
+            </div>
           </Suspense>
         </div>
       </APPStyle>

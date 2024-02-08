@@ -1,15 +1,11 @@
-import React from "react";
-
 import "normalize.css";
+import { useEffect, useState } from "react";
+import { Navigate, useLocation } from "react-router-dom";
 import "./assets/css/index.css";
-import { useState, useEffect } from "react";
 import OtherPage from "./component/otherPage";
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-import Login from "./component/Login";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   // 在组件挂载时检查用户是否已登录
   useEffect(() => {
     const userLoggedIn = localStorage.getItem("token");
@@ -28,15 +24,7 @@ function App() {
   console.log("目前路径", url);
   return (
     <div className="App">
-      <Routes>
-        {/* 匹配所有路径 */}
-        <Route
-          path="*"
-          element={
-            isLoggedIn ? <OtherPage url={url} /> : <Navigate to="/login" />
-          }
-        />
-      </Routes>
+      {isLoggedIn ? <OtherPage url={url} /> : <Navigate to="/login" />}
     </div>
   );
 }

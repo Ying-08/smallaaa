@@ -1,6 +1,6 @@
-import { RouteObject } from "react-router-dom";
-import { Navigate } from "react-router-dom";
 import { lazy } from "react";
+import { createBrowserRouter, RouteObject } from "react-router-dom";
+import App from "../App";
 import Home from "../component/Home";
 
 const PeoMan = lazy(() => import("../component/PeoMan"));
@@ -15,46 +15,48 @@ const Accounts = lazy(() => import("../component/accounts"));
 const routes: RouteObject[] = [
   {
     path: "/",
-    element: <Navigate to="/login" />,
+    element: <App></App>,
+    children: [
+      {
+        path: "/home",
+        element: <Home />,
+      },
+      {
+        path: "/peoMan",
+        element: <PeoMan />,
+      },
+      {
+        path: "/examMan",
+        element: <ExamMan />,
+      },
+      {
+        path: "/set",
+        element: <Set></Set>,
+      },
+      {
+        path: "/showSet",
+        element: <ShowSet />,
+      },
+      {
+        path: "/annSet",
+        element: <AnnSet />,
+        children: [
+          {
+            path: "/annSet/annEdit",
+            element: <AnnEdit />,
+          },
+        ],
+      },
+      {
+        path: "/accounts",
+        element: <Accounts />,
+      },
+    ],
   },
   {
     path: "/login",
     element: <Login />,
   },
-  {
-    path: "/home",
-    element: <Home />,
-  },
-  {
-    path: "/peoMan",
-    element: <PeoMan />,
-  },
-  {
-    path: "/examMan",
-    element: <ExamMan />,
-  },
-  {
-    path: "/set",
-    element: <Set></Set>,
-  },
-  {
-    path: "/showSet",
-    element: <ShowSet />,
-  },
-  {
-    path: "/annSet",
-    element: <AnnSet />,
-    children: [
-      {
-        path: "/annSet/annEdit",
-        element: <AnnEdit />,
-      },
-    ],
-  },
-  {
-    path: "/accounts",
-    element: <Accounts />,
-  },
 ];
 
-export default routes;
+export default createBrowserRouter(routes);
