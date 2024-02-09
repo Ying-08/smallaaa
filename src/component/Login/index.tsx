@@ -1,6 +1,6 @@
 import React from "react";
 import { Checkbox, Form, Input, Button } from "antd";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { loginIn } from "./service/login";
 
 const onFinishFailed = (errInfo: any) => {
@@ -15,6 +15,9 @@ export type FieldType = {
 
 const Login = () => {
   const navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state.from.pathname || "/";
+
   function submit(datas: FieldType) {
     console.log("点击====================");
 
@@ -24,7 +27,7 @@ const Login = () => {
         console.log("登录成功==================");
 
         // 登录成功后进行页面导航
-        navigate("/home");
+        navigate(from, { replace: true });
       } else {
         console.log("登陆失败========================");
       }
