@@ -11,8 +11,12 @@ body {
   height: 100%;
 }
 
+.App > div {
+  height: 100%;
+}
+
 .App {
-  display: grid;
-  grid-template-rows: auto 1fr; /* 第一行高度自适应，第二行占据剩余空间 */
+  /* display: grid;
+  grid-template-rows: auto 1fr; 第一行高度自适应，第二行占据剩余空间 */
   height: 100%;
 }

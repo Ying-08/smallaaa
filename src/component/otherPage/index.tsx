@@ -4,7 +4,7 @@ import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { APPStyle } from "../../style";
 import Header from "../Header";
 import LeftNav from "../LeftNav";
-
+import OtherPageWrapper from "./style";
 import { useEffect } from "react";
 /**
  * 页面切换loading
@@ -38,21 +38,23 @@ const RequireAuth: FC<{ children: ReactNode }> = (props) => {
 };
 const OtherPage = () => {
   return (
-    <div className="otherPage">
-      <Header />
-      <APPStyle>
-        <div className="APPWrapper">
-          <LeftNav />
-          <div className="main">
-            <RequireAuth>
-              <Suspense fallback={<Loading></Loading>}>
-                <Outlet></Outlet>
-              </Suspense>
-            </RequireAuth>
+    <OtherPageWrapper>
+      <div className="otherPage">
+        <Header />
+        <APPStyle>
+          <div className="APPWrapper">
+            <LeftNav />
+            <div className="main">
+              <RequireAuth>
+                <Suspense fallback={<Loading></Loading>}>
+                  <Outlet></Outlet>
+                </Suspense>
+              </RequireAuth>
+            </div>
           </div>
-        </div>
-      </APPStyle>
-    </div>
+        </APPStyle>
+      </div>
+    </OtherPageWrapper>
   );
 };
 

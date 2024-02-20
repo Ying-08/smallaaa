@@ -2,13 +2,17 @@ import styled from "styled-components";
 
 export const HomeWrapper = styled.div`
   .home {
+    width: 100%;
+    padding-bottom: 20px;
+    background-color: #efefef;
+  }
+
+  .above {
     display: flex;
   }
 
-  .left,
-  .right {
-    display: flex;
-    flex-direction: column;
+  .left {
+    overflow: hidden;
   }
 
   .overall-data {
@@ -91,5 +95,90 @@ export const HomeWrapper = styled.div`
     position: absolute;
     right: 30px;
     top: 5px;
+  }
+
+  /* 考核管理 */
+  .below {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  .accessMan {
+    position: relative;
+    width: 900px;
+    margin: 16px 0 16px 16px;
+    background-color: white;
+    border-radius: 10px;
+  }
+
+  .acc-title {
+    padding: 10px 20px;
+    font-size: 18px;
+  }
+
+  .drop {
+    position: absolute;
+    right: 30px;
+    top: 10px;
+  }
+
+  .acc-mid {
+    display: flex;
+    margin: 10px;
+  }
+
+  .acc-mid > div {
+    margin: 10px;
+  }
+  .square {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    background-color: #5c94c7;
+    text-align: center;
+  }
+
+  .item-2 .square,
+  .item-3 .square,
+  .item-4 .square {
+    background-color: #a3c8d3;
+  }
+
+  .square-con {
+    line-height: 100px;
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  /* 通知公告 */
+  .ann {
+    position: relative;
+    margin: 20px;
+    width: 400px;
+    border-radius: 10px;
+    background-color: white;
+  }
+
+  .ann .ell {
+    position: absolute;
+    right: 40px;
+    font-size: 22px;
+    top: 0px;
+  }
+  .ann-title {
+    padding: 10px 35px;
+    font-size: 18px;
+  }
+
+  .ann .content {
+    padding: 0 0 20px 0;
+  }
+  .ann .content > div:first-child {
+    border-top: 1px solid #cecece;
+  }
+  .ann .content > div {
+    position: relative;
+    margin: 0 30px;
+    padding: 5px;
+    border-bottom: 1px solid #cecece;
   }
 `;

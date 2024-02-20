@@ -9,6 +9,8 @@ export const APPStyle = styled.div`
   }
 
   .main {
-    background-color: #efefef;
+    width: 100%;
+    background-color: white;
+    overflow: hidden;
   }
 `;

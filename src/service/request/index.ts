@@ -15,6 +15,10 @@ class ZYRequest {
     this.instance.interceptors.request.use(
       (config) => {
         // loading/token
+        let token = localStorage.getItem("token");
+
+        console.log("得到的token", token);
+        config.headers.token = token;
         return config;
       },
       (err) => {
@@ -77,6 +81,16 @@ class ZYRequest {
   }
   patch<T = any>(config: ZYRequestConfig<T>) {
     return this.request({ ...config, method: "PATCH" });
+  }
+  postFile<T = any>(config: ZYRequestConfig<T>) {
+    console.log("用postFile================", config);
+    return this.request({
+      ...config,
+      method: "POST",
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   }
 }
 
