@@ -28,14 +28,12 @@ const Set = () => {
   let anns = selector.annInSet;
   let id: number = 1;
 
-  console.log("取得的selctor", groupIntro);
   useEffect(() => {
     dispatch(fetchSetDataAction(id));
   }, []);
 
   function handleChange(value: any) {
     id = value;
-    console.log("点击了选择器", id);
     dispatch(fetchSetDataAction(id));
   }
 

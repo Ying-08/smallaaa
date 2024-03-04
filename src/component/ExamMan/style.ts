@@ -15,6 +15,7 @@ const ExamManWrapper = styled.div`
   .examMan .left {
     width: 900px;
     padding: 20px;
+      margin: 0 auto;
   }
 
   .left > div {
@@ -78,4 +79,4 @@ const ExamManWrapper = styled.div`
   }
 `;
 
-export default ExamManWrapper;
+export default ExamManWrapper

@@ -43,12 +43,10 @@ export const fetchSetDataAction = createAsyncThunk(
     let anns = await getAnnTab(1, 5);
 
     let swipers = await getUrl(true);
-    console.log("获取的结果", groupIntro);
     let tempSUrl: any = [];
     let tempMainIntro: any = [];
     swipers.data.map((item: any, index: number) => {
       if (item.title == null && item.content == null) {
-        console.log("这是轮播图数==========");
         tempSUrl.push(item.url);
       } else {
         tempMainIntro.push(item);

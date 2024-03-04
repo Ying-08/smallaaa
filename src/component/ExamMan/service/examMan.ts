@@ -4,7 +4,6 @@ export function getExamPro() {
   let info: any = localStorage.getItem("AnyToken");
   if (info) {
     info = JSON.parse(info);
-    console.log("打印一下get里面获得的参数", info.userGroup);
     return zyRequest.post({
       url: "web/assess/getByGroup",
       data: {

@@ -1,12 +1,17 @@
 import zyRequest from "../../../../service";
 
+interface EditExamProcessParams {
+  name: string;
+  startTime: *;
+  endTime: *;
+  contentUrl: string;
+}
+
 export function editExamProcess(
-  name: string,
-  startTime: any,
-  endTime: any,
-  contentUrl: string
+  {name, startTime, endTime, contentUrl}: EditExamProcessParams
 ) {
-  let info: any = localStorage.getItem("AnyToken");
+  let info: *;
+  info = localStorage.getItem("AnyToken");
   if (info) {
     info = JSON.parse(info);
     return zyRequest.post({

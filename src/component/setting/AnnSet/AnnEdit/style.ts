@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 const annEditWrapper = styled.div`
+   
   .ann {
     position: relative;
     padding: 20px;
+   
   }
   .below > div,
   .above > div {

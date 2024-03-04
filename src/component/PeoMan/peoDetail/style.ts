@@ -8,7 +8,7 @@ const PeoDetailWrapper = styled.div`
     background-color: #efefef;
   }
   .peoDetail > div {
-    margin-left: 30px;
+    margin: 0 auto;
   }
 
   /* 上面 */
@@ -67,8 +67,8 @@ const PeoDetailWrapper = styled.div`
   }
 
   .right input {
-    width: 100px;
-    margin-right: 75px;
+    width: 120px;
+    margin-right: 35px;
   }
 
   .content .item {
@@ -88,7 +88,16 @@ const PeoDetailWrapper = styled.div`
     right: 10px;
   }
   /* 取消黑框 */
-
+    .remark{
+        position: relative;
+        margin-top: 25px;
+    }
+    
+    .remark .space{
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
   textarea {
     width: 100%;
     height: 100%;
@@ -103,6 +112,12 @@ const PeoDetailWrapper = styled.div`
   textarea:focus {
     outline: none;
   }
+    
+//    按钮的设置
+    .pass{
+        color: white;
+        background-color: #4E99CA;
+    }
 `;
 
 export default PeoDetailWrapper;

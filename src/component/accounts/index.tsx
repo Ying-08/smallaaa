@@ -122,7 +122,7 @@ const Accounts = () => {
           +添加
         </button>
         <Modal
-          title="表单标题"
+          title="添加账号"
           open={visible}
           onCancel={handleCloseModal}
           footer={null} // 不显示默认的底部按钮
@@ -159,7 +159,7 @@ const Accounts = () => {
               </Select>
             </Form.Item>
             <Form.Item
-              label="name"
+              label="姓名"
               name="name"
               rules={[{ required: true, message: "请输入姓名" }]}
             >
@@ -180,7 +180,7 @@ const Accounts = () => {
               <Input placeholder="请输入昵称" />
             </Form.Item>
             <Form.Item>
-              <Button type="primary" htmlType="submit">
+              <Button type="primary" htmlType="submit" style={{float:"right"}}>
                 提交
               </Button>
             </Form.Item>

@@ -2,6 +2,9 @@ import { Form, Button } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import EditGroupWrapper from "./style";
 import { editGroup } from "./service/editGroup";
+import {useEffect} from "react";
+import {useAppDispatch, useAppSeletor} from "../../../store";
+import {fetcheditGroupDataAction} from "./store/editGroup";
 
 const EditGroupIntro = () => {
   // 获取当前页面的 URL 路径
@@ -10,7 +13,14 @@ const EditGroupIntro = () => {
   // 使用 split 方法将 URL 路径以 '/' 分割成数组，并获取最后一个元素
   const parts = url.split("/");
   let id: number = Number(parts[parts.length - 1]);
-  console.log("是否拿到id", id);
+
+  // store
+  const store=useAppSeletor(state=>state.editGroupSlice.data)
+  console.log("看一下身体柔儿",store)
+  const dispatch=useAppDispatch()
+  useEffect(()=>{
+    dispatch(fetcheditGroupDataAction(id))
+  },[])
 
   function onFinsh(values: any) {
     console.log("提交表单", values);
@@ -30,6 +40,7 @@ const EditGroupIntro = () => {
               <TextArea
                 placeholder="请输入内容"
                 style={{ resize: "none", height: 150 }}
+                // defaultValue={store.content}
               />
             </Form.Item>
             <Form.Item

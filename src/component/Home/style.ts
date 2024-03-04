@@ -9,7 +9,12 @@ export const HomeWrapper = styled.div`
 
   .above {
     display: flex;
+      width: 100%;
   }
+    
+    .above>div{
+        margin: 0 auto;
+    }
 
   .left {
     overflow: hidden;
@@ -98,14 +103,16 @@ export const HomeWrapper = styled.div`
   }
 
   /* 考核管理 */
+    
   .below {
     width: 100%;
     overflow-x: hidden;
+      margin: 20px auto;
   }
   .accessMan {
     position: relative;
     width: 900px;
-    margin: 16px 0 16px 16px;
+    margin: 0 auto;
     background-color: white;
     border-radius: 10px;
   }
@@ -155,6 +162,7 @@ export const HomeWrapper = styled.div`
     margin: 20px;
     width: 400px;
     border-radius: 10px;
+    
     background-color: white;
   }
 
@@ -178,7 +186,4 @@ export const HomeWrapper = styled.div`
   .ann .content > div {
     position: relative;
     margin: 0 30px;
-    padding: 5px;
-    border-bottom: 1px solid #cecece;
-  }
-`;
+    }`

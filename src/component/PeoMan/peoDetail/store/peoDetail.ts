@@ -1,13 +1,17 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getpeoDetail } from "../service/peoDetail";
+import {getpeoDetail, queryInfo} from "../service/peoDetail";
 
-const initialState = {};
+const initialState = {
+  data:[]
+};
 
 const peoDetailSlice = createSlice({
   name: "peoDetail",
   initialState,
   reducers: {
-    setName(state, action) {},
+    setName(state, action) {
+      state.data=action.payload
+    },
   },
 });
 
@@ -15,7 +19,11 @@ let setName = peoDetailSlice.actions.setName;
 
 export const fetchPeoDetDataAction = createAsyncThunk(
   "peoDetail",
-  async (data: any, { dispatch }) => {}
+  async (data: any, { dispatch }) => {
+   let res=await queryInfo(data)
+    console.log('///////////',res.data)
+    dispatch(setName(res.data))
+  }
 );
 
 let peoDetReducer = peoDetailSlice.reducer;

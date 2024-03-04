@@ -17,8 +17,8 @@ class ZYRequest {
         // loading/token
         let token = localStorage.getItem("token");
 
-        console.log("得到的token", token);
         config.headers.token = token;
+        config.headers["Access-Control-Allow-Origin"]="*"
         return config;
       },
       (err) => {
@@ -81,6 +81,9 @@ class ZYRequest {
   }
   patch<T = any>(config: ZYRequestConfig<T>) {
     return this.request({ ...config, method: "PATCH" });
+  }
+  put<T = any>(config: ZYRequestConfig<T>) {
+    return this.request({ ...config, method: "PUT" });
   }
   postFile<T = any>(config: ZYRequestConfig<T>) {
     console.log("用postFile================", config);

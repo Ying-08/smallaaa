@@ -8,7 +8,6 @@ export function getPeoData(
   major?: string,
   groupOption?: string
 ) {
-  console.log("发送了=================");
   return zyRequest.get({
     url: "web/user/info",
     params: {

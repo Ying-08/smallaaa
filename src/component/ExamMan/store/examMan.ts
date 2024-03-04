@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getExamCon, getExamPro } from "../service/examMan";
+import {createLogger} from "typescript-plugin-css-modules/dist/helpers/logger";
 
 let initialState = {
   process: [],
@@ -34,7 +35,18 @@ export const fetchExamManDataAction = createAsyncThunk(
     let process = await getExamPro();
     let condition = await getExamCon();
 
-    dispatch(setProcess(process.data));
+    let data=process.data
+
+    for(let i=0;i<data.length;i++){
+        if(data[i].contentUrl){
+            data[i].contentUrl=data[i].contentUrl.split(",")
+        }else {
+            data[i].contentUrl=[]
+        }
+    }
+
+      console.log("看一下改制后的数组",data)
+    dispatch(setProcess(data))
 
     let arr: dataType[] = [];
 

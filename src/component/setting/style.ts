@@ -54,7 +54,7 @@ const SetWrapper = styled.div`
   .mainIntro img {
     width: 300px;
     height: auto;
-    margin: 0 auto;
+    margin: 20px auto;
   }
 
   /* 通知公告 */

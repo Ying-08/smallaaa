@@ -16,3 +16,11 @@ export function editGroup(
     },
   });
 }
+
+export function getIntro(id:number){
+  return zyRequest.get({
+    url:"web/introduce/get",
+    params: {id}
+  })
+
+}

@@ -49,11 +49,9 @@ const EditContent = () => {
 
   // 超出大小的删除上传框
   const handleChange = (file: any) => {
-    console.log("看一下file=============", file);
     // 设置url数组
     if (file.file.status === "done") {
       setUrl([...urls, file.file.response.data]);
-      console.log("看一下返回的url", file.file.response.data);
     }
     // 超出大小的文件处理
     let list: UploadFile[] = [];
@@ -77,8 +75,7 @@ const EditContent = () => {
     const startTime = dayjs(dateObj).format("YYYY-MM-DD HH:mm:ss");
     const endTime = dayjs(dateObj1).format("YYYY-MM-DD HH:mm:ss");
 
-    console.log("提交的数据", urls);
-    editExamProcess(values.select, startTime, endTime, urls[0])?.then((res) => {
+    editExamProcess({name : values.select, startTime : startTime, endTime : endTime, contentUrl : urls.toString()})?.then((res) => {
       info(res.msg);
     });
   };
@@ -93,14 +90,9 @@ const EditContent = () => {
             <Form.Item
               label="考核名称"
               name="select"
-              rules={[{ required: true, message: "请选择一个选项!" }]}
+              rules={[{ required: true, message: "请输入考核名称" }]}
             >
-              <Select placeholder="请选择">
-                <Option value="面试">面试</Option>
-                <Option value="一轮考核">一轮考核</Option>
-                <Option value="二轮考核">二轮考核</Option>
-                <Option value="最终答辩">最终答辩</Option>
-              </Select>
+              <Input placeholder="请输入考核名称"></Input>
             </Form.Item>
 
             <Form.Item
@@ -135,7 +127,7 @@ const EditContent = () => {
                 headers={{
                   token,
                 }}
-                action="https://smalla.zifeiyu.love/web/assess/uploadfile"
+                action="https://smalla.zifeiyu.love/api/web/assess/uploadfile"
               >
                 <button style={{ border: 0, background: "none" }} type="button">
                   <PlusOutlined />

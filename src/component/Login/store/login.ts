@@ -25,7 +25,6 @@ const userSlice = createSlice({
       const decoded = jwtDecode(action.payload);
       if (decoded.sub) {
         state.anyToken = JSON.parse(decoded.sub);
-        console.log("set解析的token", decoded, JSON.parse(decoded.sub));
       }
     },
   },
@@ -45,7 +44,6 @@ export const fetchUserAction = createAsyncThunk(
   async (data: dataType, { dispatch }) => {
     console.log("datadata", data.from);
     loginIn(data.datas).then((res) => {
-      console.log("正在登录==============", res.data);
 
       if (res.data) {
         localStorage.setItem("token", res.data.token);

@@ -5,7 +5,6 @@ import { Form, Table, TableProps, Input, Button, Row, Col } from "antd";
 import PeoManWrapper from "./style";
 import { useAppSeletor } from "../../store";
 import { Select } from "antd";
-import { getPeoData } from "./service/peoMan";
 import { message } from "antd";
 import { useNavigate } from "react-router-dom";
 
@@ -27,7 +26,6 @@ const PeoMan = () => {
   const [messageApi, contextHolder] = message.useMessage();
 
   const info = (text: string) => {
-    console.log("调用info=============");
     messageApi.info(text);
   };
 
@@ -36,9 +34,7 @@ const PeoMan = () => {
   const state = useAppSeletor((state) => state.peoMan.data);
   let total: number = state.total;
   const data: peoTabType[] = state.records;
-  console.log("看一下获取的data", state.records);
   useEffect(() => {
-    console.log("进入人员管理");
     dispatch(fetchPeoDataAction({ page: 1, pageSize: 10 }));
   }, []);
 

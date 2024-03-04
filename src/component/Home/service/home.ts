@@ -30,12 +30,9 @@ export function getPeoTab() {
     },
   });
 }
-export function getExamPro(userGroup: any) {
+export function getExamPro() {
   return zyRequest.post({
     url: "web/assess/getByGroup",
-    data: {
-      assessGroup: Number(userGroup),
-    },
   });
 }
 

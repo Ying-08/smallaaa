@@ -74,21 +74,21 @@ const AnnEdit: FC<IPros> = () => {
           >
             返回
           </Button>
-          <Button
-            style={{ marginRight: 30 }}
-            onClick={() => {
-              reviseAnn(
-                id,
-                inputValue,
-                textValue,
-                info.username,
-                false,
-                info.userGroup
-              );
-            }}
-          >
-            暂存
-          </Button>
+          {/*<Button*/}
+          {/*  style={{ marginRight: 30 }}*/}
+          {/*  onClick={() => {*/}
+          {/*    reviseAnn(*/}
+          {/*      id,*/}
+          {/*      inputValue,*/}
+          {/*      textValue,*/}
+          {/*      info.username,*/}
+          {/*      false,*/}
+          {/*      info.userGroup*/}
+          {/*    );*/}
+          {/*  }}*/}
+          {/*>*/}
+          {/*  暂存*/}
+          {/*</Button>*/}
           <Button
             onClick={() => {
               reviseAnn(

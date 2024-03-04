@@ -12,6 +12,7 @@ import annEditReducer from "../component/setting/AnnSet/AnnEdit/store/annEdit";
 import picReducer from "../component/setting/ShowSet/store/showSet";
 import setReducer from "../component/setting/store/set";
 import examManReducer from "../component/ExamMan/store/examMan";
+import editGroupReducer from "../component/setting/EditGroupIntro/store/editGroup";
 
 const store = configureStore({
   reducer: {
@@ -25,6 +26,7 @@ const store = configureStore({
     picSlice: picReducer,
     setSlice: setReducer,
     examManSlice: examManReducer,
+    editGroupSlice:editGroupReducer
   },
 });
 

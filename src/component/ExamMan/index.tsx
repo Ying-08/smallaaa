@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
 import ExamManWrapper from "./style";
-import { Button, Table, TableProps } from "antd";
+import { Button, Table, TableProps, Modal } from "antd";
 import { Space } from "antd";
-import { Navigate, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSeletor } from "../../store";
 import { fetchExamManDataAction } from "./store/examMan";
 import { message } from "antd";
 import { deletePro } from "./service/examMan";
 import type { TableColumnsType } from "antd";
+import {useState} from "react";
+
 
 const ExamMan = () => {
   const dispatch = useAppDispatch();
@@ -29,10 +31,40 @@ const ExamMan = () => {
 
   const handleDelete = (record: any) => {
     // 处理删除逻辑
-    console.log("删除记录:", record);
-    deletePro(record.id);
+    deletePro(record.id).then((res)=>{
+        info(res.data)
+    });
+
+    dispatch(fetchExamManDataAction());
   };
 
+  // 处理下载的流程
+  const [visible, setVisible] = useState(false);
+  const [downloadUrl, setDownloadUrl] = useState('');
+
+  const handleDownload = (url: string) => {
+    setDownloadUrl(url);
+    setVisible(true);
+  };
+
+  const handleConfirmDownload = () => {
+    // 执行文件下载操作，这里可以使用类似 window.open(downloadUrl) 的方式下载文件
+    const downloadLink = document.createElement('a');
+    downloadLink.style.display = 'none';
+    document.body.appendChild(downloadLink);
+
+    // 设置要下载的文件链接
+    downloadLink.href = downloadUrl;
+    downloadLink.download = downloadUrl; // 设置下载文件的名称
+
+    // 模拟点击下载链接
+    downloadLink.click();
+
+    // 下载完成后移除<a>标签
+    document.body.removeChild(downloadLink);
+    // 下载完成后关闭确认框
+    setVisible(false);
+  };
   // 考核流程
   interface examTabType {
     id: string;
@@ -41,7 +73,7 @@ const ExamMan = () => {
     startTime: string;
     endTime: string;
     status: string;
-    contentUrl: string;
+    contentUrl:string[] ;
   }
 
   const columns: TableColumnsType<examTabType> = [
@@ -73,6 +105,13 @@ const ExamMan = () => {
       dataIndex: "contentUrl",
       ellipsis: true,
       align: "center",
+      render: (contentUrl:string[]) => (
+          <div>
+            {contentUrl.map((item:string,index:number)=> (
+                <div key={index} onClick={() => handleDownload(item)} style={{cursor:"pointer"}}>{item}</div>
+            ))}
+          </div>
+      )
     },
     {
       title: "操作",
@@ -175,6 +214,15 @@ const ExamMan = () => {
           </div>
         </div>
       </div>
+      <Modal
+          title="确认下载"
+          visible={visible}
+          onOk={handleConfirmDownload}
+          onCancel={() => setVisible(false)}
+          style={{position:"absolute",top:"45%",left:"45%"}}
+      >
+        <p>确定要下载文件吗？</p>
+      </Modal>
     </ExamManWrapper>
   );
 };
