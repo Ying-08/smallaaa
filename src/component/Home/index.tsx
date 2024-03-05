@@ -154,36 +154,6 @@ const Home: FC<IProps> = () => {
                   </div>
                 })
               }
-              {/*/!* 面试 *!/*/}
-              {/*<div className="item">*/}
-              {/*  <div className="icon-wrapper three-i">*/}
-              {/*    <UserOutlined*/}
-              {/*      style={{ fontSize: "26px", color: "#AFEAF9" }}*/}
-              {/*    />*/}
-              {/*  </div>*/}
-              {/*  <div className="item-title">面试</div>*/}
-              {/*  <div className="item-data">{useSel.interview}</div>*/}
-              {/*</div>*/}
-              {/*/!* 一轮考核 *!/*/}
-              {/*<div className="item">*/}
-              {/*  <div className="icon-wrapper four-i">*/}
-              {/*    <ProfileOutlined*/}
-              {/*      style={{ fontSize: "26px", color: "#E85014" }}*/}
-              {/*    />*/}
-              {/*  </div>*/}
-              {/*  <div className="item-title">一轮考核</div>*/}
-              {/*  <div className="item-data">{useSel.firstExam}</div>*/}
-              {/*</div>*/}
-              {/*/!* 二轮考核 *!/*/}
-              {/*<div className="item">*/}
-              {/*  <div className="icon-wrapper five-i">*/}
-              {/*    <ReadOutlined*/}
-              {/*      style={{ fontSize: "26px", color: "#13E9F0" }}*/}
-              {/*    />*/}
-              {/*  </div>*/}
-              {/*  <div className="item-title">二轮考核</div>*/}
-              {/*  <div className="item-data">{useSel.secExam}</div>*/}
-              {/*</div>*/}
             </div>
 
             {/* 人员管理 */}
@@ -254,7 +224,7 @@ const Home: FC<IProps> = () => {
                       <div className="square">
                         <div className="square-con">{item.name}</div>
                       </div>
-                      <div className="acc-status">{dayjs(item.startTime).isBefore(dayjs())?"未开始":dayjs(item.endTime).isAfter(dayjs())?"已结束":"进行中"}</div>
+                      <div className="acc-status">{dayjs(item.startTime).isAfter(dayjs())?"未开始":dayjs(item.endTime).isBefore(dayjs())?"已结束":"进行中"}</div>
                       <div className="acc-time">{item.startTime + " -"}</div>
                       <div>{item.endTime}</div>
                     </div>
@@ -262,35 +232,6 @@ const Home: FC<IProps> = () => {
                   </Fragment>
                 })
               }
-              {/*<div className="item-2">*/}
-              {/*  <div className="square">*/}
-              {/*    <div className="square-con">一轮考核</div>*/}
-              {/*  </div>*/}
-              {/*  <div className="acc-status">已完成</div>*/}
-              {/*  <div className="acc-time">*/}
-              {/*    {eventsTime[1].startTime + " " + "-"}*/}
-              {/*  </div>*/}
-              {/*  <div>{eventsTime[1].endTime}</div>*/}
-              {/*</div>*/}
-              {/*<ArrowRightOutlined style={{ marginRight: 20 }} />*/}
-              {/*<div className="item-3">*/}
-              {/*  <div className="square">*/}
-              {/*    <div className="square-con">二轮考核</div>*/}
-              {/*  </div>*/}
-              {/*  <div className="acc-status">已完成</div>*/}
-              {/*  <div className="acc-time">*/}
-              {/*    {eventsTime[2].startTime + " " + "-"}*/}
-              {/*  </div>*/}
-              {/*  <div>{eventsTime[2].endTime}</div>*/}
-              {/*</div>*/}
-              {/*<ArrowRightOutlined style={{ marginRight: 20 }} />*/}
-              {/*<div className="item-4">*/}
-              {/*  <div className="square">*/}
-              {/*    <div className="square-con">最终答辩</div>*/}
-              {/*  </div>*/}
-              {/*  <div className="acc-status">已完成</div>*/}
-              {/*  <div className="acc-time">2023</div>*/}
-              {/*</div>*/}
             </div>
           </div>
         </div>

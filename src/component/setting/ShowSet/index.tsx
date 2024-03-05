@@ -133,7 +133,7 @@ const ShowSet = () => {
                   let tempInput = [...inputValues];
                   let tempText = [...textValues];
                   imgUrl.map((item, index) => {
-                    if (item === file?.response?.data || file?.url) {
+                    if (item === file?.response?.data || item === file?.url) {
                       tempUrl.splice(index, 1);
                       tempInput.splice(index, 1);
                       tempText.splice(index, 1);

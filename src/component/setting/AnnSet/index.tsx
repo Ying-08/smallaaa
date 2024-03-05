@@ -42,7 +42,14 @@ const AnnEdit = () => {
       title: "发布时间",
       dataIndex: "publishTime",
       key: "publishTime",
-      render: (text: any) => <span>{text}</span>,
+      render: (text: any) => {
+          if(text){
+              return <span>{text[0]+"-"+text[1]+"-"+text[2]}</span>
+          }else {
+              return <span></span>
+          }
+
+      }
     },
     {
       title: "发布人",
@@ -62,11 +69,12 @@ const AnnEdit = () => {
               deleteAnn(record.id)
                 .then(() => {
                   info("删除成功");
+                    window.location.reload();
                 })
                 .catch(() => {
                   info("删除失败");
                 });
-              window.location.reload();
+
             }}
           >
             删除

@@ -7,6 +7,7 @@ import { useAppSeletor } from "../../store";
 import { Select } from "antd";
 import { message } from "antd";
 import { useNavigate } from "react-router-dom";
+import {deleteUser} from "./service/peoMan";
 
 // 下方展示的表格
 interface peoTabType {
@@ -65,12 +66,12 @@ const PeoMan = () => {
       key: "major",
       render: (text) => <span>{text}</span>,
     },
-    {
-      title: "组别",
-      dataIndex: "cate",
-      key: "cate",
-      render: (text) => <span>{text}</span>,
-    },
+    // {
+    //   title: "组别",
+    //   dataIndex: "cate",
+    //   key: "cate",
+    //   render: (text) => <span>{text}</span>,
+    // },
     {
       title: "目前进度",
       dataIndex: "currentAssess",
@@ -82,34 +83,45 @@ const PeoMan = () => {
       dataIndex: "phone",
       key: "phone",
       render: (text, record) => (
-        <span>
+          <span>
           {text}
-          <a
-            style={{ marginLeft: 20 }}
-            onClick={() => {
-              console.log("点击了");
-              localStorage.setItem("people", JSON.stringify(record));
-              navigate(`/peoMan/peoDetail/${record.openid}`);
-            }}
-          >
+              <a
+                  style={{marginLeft: 20}}
+                  onClick={() => {
+                      console.log("点击了");
+                      localStorage.setItem("people", JSON.stringify(record));
+                      navigate(`/peoMan/peoDetail/${record.openid}`);
+
+                  }}
+              >
             查看
+          </a>
+            <a
+                style={{marginLeft: 20}}
+                onClick={async () => {
+                    console.log("点击了");
+                    await deleteUser(record.openid)
+                    window.location.reload()
+                }}
+            >
+            删除
           </a>
         </span>
       ),
     },
   ];
-  // 输入表单
+    // 输入表单
 
-  const handleSubmit = (values: any) => {
-    dispatch(
-      fetchPeoDataAction({
-        page: 1,
-        pageSize: 10,
-        name: values.name,
-        college: values.college,
-        major: values.major,
-        groupOption: values.groupOption,
-      })
+    const handleSubmit = (values: any) => {
+        dispatch(
+            fetchPeoDataAction({
+                page: 1,
+                pageSize: 10,
+                name: values.name,
+                college: values.college,
+                major: values.major,
+                groupOption: values.groupOption,
+            })
     );
   };
 

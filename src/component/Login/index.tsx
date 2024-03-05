@@ -5,7 +5,7 @@ import { FC } from "react";
 import { useAppDispatch } from "../../store";
 import { fetchUserAction } from "./store/login";
 import LoginWrapper from "./style";
-
+import bgImg from "./后台背景图.png"
 interface IProps {
   children?: ReactNode;
 }
@@ -24,7 +24,7 @@ const Login: FC<IProps> = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   let location = useLocation();
-  let from = location.state.from.pathname || "/";
+  let from = location.state?.from?.pathname || "/";
 
   function submit(datas: FieldType) {
     // 发起网络请求
@@ -34,12 +34,12 @@ const Login: FC<IProps> = () => {
   return (
     <LoginWrapper>
       <div>
-        <img src="./后台背景图.png" alt="" className="back" />
+        <img src={require('./后台背景图.png')} alt="" className="back" />
         <Form
           name="basic"
           labelCol={{ span: 8 }}
           wrapperCol={{ span: 16 }}
-          style={{ maxWidth: 600 }}
+          style={{ maxWidth: 600,position:"absolute",top:"50%",left:"70%" }}
           initialValues={{ remember: false }}
           onFinish={(values) => {
             submit(values);
@@ -71,7 +71,7 @@ const Login: FC<IProps> = () => {
             <Checkbox>记住密码</Checkbox>
           </Form.Item>
 
-          <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+          <Form.Item wrapperCol={{ offset: 8, span: 16 }}  style={{float:"right"}}>
             <Button type="primary" htmlType="submit">
               登录
             </Button>

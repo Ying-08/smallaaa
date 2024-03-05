@@ -22,7 +22,7 @@ export function deleteAccounts(username: string) {
 type dataType = {
   username: string;
   password: string;
-  userGroup: string;
+  select: string;
   name: string;
   phone: string;
   nickname: string;
@@ -34,7 +34,7 @@ export function addAccounts(data: dataType) {
     data: {
       username: data.username,
       password: data.password,
-      userGroup: data.userGroup,
+      userGroup: data.select,
       name: data.name,
       phone: data.phone,
       nickname: data.nickname,

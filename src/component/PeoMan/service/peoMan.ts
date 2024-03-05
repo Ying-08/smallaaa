@@ -20,3 +20,13 @@ export function getPeoData(
     },
   });
 }
+export function deleteUser(
+    openid:string
+) {
+  return zyRequest.delete({
+    url: "web/user",
+    params: {
+      openid
+    },
+  });
+}

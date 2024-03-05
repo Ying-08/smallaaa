@@ -110,7 +110,7 @@ const PeoDetail = () => {
                             </React.Fragment>
                         ) : (
                             <React.Fragment>
-                              <Input type="number" placeholder="请输入分数" disabled={!item.currentAssess} min={0} max={100} value={inputValue[index]} onChange={(e)=>{handleScoreChange(e,index)}}/>
+                              <Input type="number" placeholder="请输入分数" disabled={!item.currentAssess} min={0} required={true} max={100} value={inputValue[index]} onChange={(e)=>{handleScoreChange(e,index)}}/>
                               <button className="unpass"  onClick={()=>{passClick(0,false,inputValue[index])}}>不通过</button>
                               <button className="pass" onClick={()=>{passClick(0,true,inputValue[index])}}>通过</button>
                             </React.Fragment>

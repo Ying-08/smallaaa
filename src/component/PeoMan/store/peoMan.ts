@@ -39,7 +39,7 @@ export const fetchPeoDataAction = createAsyncThunk(
       data.groupOption
     );
     if (res) {
-      console.log("人员管理页面的数据", res.data);
+      console.log("人员管理页面的数据", res);
       dispatch(setData(res.data));
     }
   }
