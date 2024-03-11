@@ -112,7 +112,27 @@ const PeoMan = () => {
   ];
     // 输入表单
 
+    type obj={
+        name: string,
+        college: string,
+        major: string,
+        groupOption?: string
+        ,
+    }
+    let queryObj:obj={
+        name: "",
+        college: "",
+        major: "",
+    }
     const handleSubmit = (values: any) => {
+        queryObj={
+            name: values.name,
+            college: values.college,
+            major: values.major,
+            groupOption: values.groupOption,
+        }
+        localStorage.setItem("queryObj",JSON.stringify(queryObj))
+        console.log("设置obj============",queryObj)
         dispatch(
             fetchPeoDataAction({
                 page: 1,
@@ -179,7 +199,12 @@ const PeoMan = () => {
             pageSize: 10, // 每页条数
             showSizeChanger: false, // 显示每页条数切换器
             onChange: (page, pageSize) => {
-              dispatch(fetchPeoDataAction({ page: page, pageSize: pageSize }));
+              let obj1=  JSON.parse(localStorage.getItem("queryObj")||"")
+              dispatch(fetchPeoDataAction({ page: page, pageSize: pageSize,name: obj1.name,
+                    college: obj1.college,
+                    major: obj1.major,
+                    groupOption: obj1.groupOption, }));
+              console.log("obj=================",obj1)
               console.log("页数变化：", page);
               console.log("每页条数变化：", pageSize);
             },
